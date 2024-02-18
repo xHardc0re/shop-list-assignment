@@ -53,4 +53,26 @@ class ShopController extends Controller
 
         return response()->json(['message' => 'Shop deletion was successful.']);
     }
+
+    public function index(Request $request)
+    {
+        $query = Shop::query();
+        $user =  auth('sanctum')->user();
+
+        if ($user) {
+            $query->where('user_id', $user->id);
+        }
+
+        if ($request->filled('city')) {
+            $query->where('city', $request->city);
+        }
+
+        if ($request->filled('category_id')) {
+            $query->where('category_id', $request->category_id);
+        }
+
+        $shops = $query->paginate(5);
+
+        return response()->json($shops);
+    }
 }

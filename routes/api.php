@@ -28,5 +28,4 @@ Route::middleware('auth:sanctum')->post('/categories', [CategoryController::clas
 Route::middleware('auth:sanctum')->post('/shops', [ShopController::class, 'create']);
 Route::middleware('auth:sanctum')->put('/shops/{shop}', [ShopController::class, 'update']);
 Route::middleware('auth:sanctum')->delete('/shops/{shop}', [ShopController::class, 'destroy']);
-
-
+Route::get('/shops', [ShopController::class, 'index']);
