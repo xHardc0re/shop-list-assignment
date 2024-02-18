@@ -17,6 +17,6 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return response()->json(['message' => 'Category creation was successful', 'category' => $category], 201);
+        return response()->json(['message' => 'Category creation was successful.', 'category' => $category], 201);
     }
 }

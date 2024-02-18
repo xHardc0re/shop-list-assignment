@@ -29,6 +29,28 @@ class ShopController extends Controller
             'address'           => $request->address,
         ]);
 
-        return response()->json(['message' => 'Shop creation was successful', 'shop' => $shop], 201);
+        return response()->json(['message' => 'Shop creation was successful.', 'shop' => $shop], 201);
+    }
+
+    public function update(Request $request, Shop $shop)
+    {
+        $request->validate([
+            'name'              => 'required',
+            'description'       => 'required',
+            'open_hours'        => 'required',
+            'city'              => 'required',
+            'address'           => 'nullable',
+        ]);
+
+        $shop->update($request->only('name', 'description', 'open_hours', 'city', 'address'));
+
+        return response()->json(['message' => 'Shop update was successful.', 'shop' => $shop]);
+    }
+
+    public function destroy(Request $request, Shop $shop)
+    {
+        $shop->delete();
+
+        return response()->json(['message' => 'Shop deletion was successful.']);
     }
 }

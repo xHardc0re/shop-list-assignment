@@ -26,4 +26,7 @@ Route::post('/register', [RegisterController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::middleware('auth:sanctum')->post('/categories', [CategoryController::class, 'create']);
 Route::middleware('auth:sanctum')->post('/shops', [ShopController::class, 'create']);
+Route::middleware('auth:sanctum')->put('/shops/{shop}', [ShopController::class, 'update']);
+Route::middleware('auth:sanctum')->delete('/shops/{shop}', [ShopController::class, 'destroy']);
+
 
