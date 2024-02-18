@@ -15,7 +15,10 @@ This Laravel application requires the following dependencies:
    ```bash
    composer install
    ```
-3. Configure your environment variables (database connection, etc.).
+3. Create .env file & configure your environment variables (database connection, etc.).:
+   ```bash
+   cp .env.example .env
+   ```
 4. Migrate the database:
    ```bash
    php artisan migrate
